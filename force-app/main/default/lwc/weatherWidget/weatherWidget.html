@@ -1,0 +1,41 @@
+<template>
+    <div class="weather-container">
+        <h2>Weather Widget</h2>
+        <div class="search-section">
+            <input 
+                type="text" 
+                class="city-input"
+                placeholder="Enter city name"
+                onchange={handleCityChange}
+            />
+            <button onclick={handleSearch} class="search-btn">Search</button>
+        </div>
+        
+        <template if:true={isLoading}>
+            <div class="loading">Loading weather data...</div>
+        </template>
+        
+        <template if:false={isLoading}>
+            <template if:true={temperature}>
+                <div class="weather-info">
+                    <div class="weather-item">
+                        <span class="label">Temperature:</span>
+                        <span class="value">{temperature}</span>
+                    </div>
+                    <div class="weather-item">
+                        <span class="label">Condition:</span>
+                        <span class="value">{description}</span>
+                    </div>
+                    <div class="weather-item">
+                        <span class="label">Humidity:</span>
+                        <span class="value">{humidity}</span>
+                    </div>
+                    <div class="weather-item">
+                        <span class="label">Wind Speed:</span>
+                        <span class="value">{windSpeed}</span>
+                    </div>
+                </div>
+            </template>
+        </template>
+    </div>
+</template>
